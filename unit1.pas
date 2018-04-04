@@ -85,8 +85,8 @@ begin
     DBEdit1.DataField := '';
     SQLQuery1.active := false;
     SQLQuery1.sql.text := 'SELECT contrasena FROM registros WHERE contrasena = '''+Edit2.text+''' AND matricula = '+Edit1.text+';';
-    SQLQuery1.active := true;
     DBEdit1.DataField:='contrasena';
+    SQLQuery1.active := true;
     Delay (3000);
 
     if(DBEdit1.text = Edit2.text)then
@@ -104,6 +104,7 @@ begin
       Timer1.enabled := true;
     end
     else
+
     begin
       ShowMessage('Contraseña incorrecta');
       SQLQuery1.active := false;

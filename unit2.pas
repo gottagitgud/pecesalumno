@@ -41,6 +41,7 @@ var
   Form2: TForm2;
   consultamatricula: TStringList;
   MousePos: TPoint;
+  grupo: string;
 
 implementation
 
@@ -67,7 +68,12 @@ begin
       begin
            if(DBEdit1.text = '')then
            begin
-            SQLQuery2.SQL.text := 'insert into registros (nombre, grupo, matricula, contrasena) values('''+Edit1.text+''','''+Edit2.text+''','+Edit3.text+','''+Edit4.text+''')';
+            grupo:=Edit2.Text;
+            if (grupo[2]='-') then
+            begin
+              grupo:=grupo[1]+grupo[3];
+            end;
+            SQLQuery2.SQL.text := 'insert into registros (nombre, grupo, matricula, contrasena) values('''+Edit1.text+''','''+grupo+''','+Edit3.text+','''+Edit4.text+''')';
             SQLQuery2.ExecSQL;
             SQLTransaction2.Commit;
             ShowMessage('Registrado correctamente');
